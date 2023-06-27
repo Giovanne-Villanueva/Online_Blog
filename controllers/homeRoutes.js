@@ -36,15 +36,18 @@ router.get('/blog/:id', async (req, res) => {
           attributes: ['name'],
         },
         {
-          model: Comment
+          model: Comment,
+          include:{model:User, attributes:['name']}
         }
       ],
     });
 
-    const project = blogData.get({ plain: true });
+    const blog = blogData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
+    console.log(blog.comments)
+
+    res.render('blog', {
+      ...blog,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -63,7 +66,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('dashboard', {
       ...user,
       logged_in: true
     });
@@ -75,7 +78,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/dashboard');
     return;
   }
 
