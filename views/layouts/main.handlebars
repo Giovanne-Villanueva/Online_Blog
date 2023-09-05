@@ -4,26 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
   <title>Tech Blog</title>
 </head>
 
-<body>
-  <div >
-    <header >
-      <h1>
-        <a href="/">Tech Blog</a>
-      </h1>
-      <nav>
+<body class="w-full h-full bg-lime-200 m-0 text">
+  <div>
+    <header class="bg-yellow-950 text-lime-200 py-2">
+      <nav class="grid grid-cols-3 w-full sm:w-5/12 mx-2 p-1 font-semibold">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a> |
+        <a href="/dashboard">Dashboard</a>
+        <a href="/">Home</a>
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
       </nav>
+      <h1 class="grid w-1/4 m-2 p-2">
+        <a class="font-extrabold bg-lime-200 text-yellow-950 text-lg sm:text-2xl md:text-3xl lg:text-5xl p-1 lg:p-2 rounded-md border-b-4 border-r-4 border-gray-500" href="/">Tech Blog</a>
+      </h1>
     </header>
-    <main>
+    <main class ="text-yellow-950">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>

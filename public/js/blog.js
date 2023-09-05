@@ -37,12 +37,12 @@ const appearForm = async (event) => {
     console.log(button)
     console.log(state);
     if( state === 1 ){
-        form.classList.add('hide')
+        form.classList.add('hidden')
         button.textContent='Add a Comment'
         state--;
     }
     else{
-        form.classList.remove('hide');
+        form.classList.remove('hidden');
         button.textContent='Cancel making Comment';
         state++;
     }
