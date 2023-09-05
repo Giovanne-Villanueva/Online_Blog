@@ -1,3 +1,8 @@
+const button = document.querySelector('.add');
+const newBlog = document.querySelector('.create')
+const list = document.querySelector('.blog-list')
+let state=0;
+
 const newFormHandler = async (event) => {
     event.preventDefault();
   
@@ -17,11 +22,36 @@ const newFormHandler = async (event) => {
         document.location.replace('/dashboard');
       } else {
         alert('Failed to create blog');
+        newBlog.classList.add('hidden');
+        list.classList.remove('hidden')
+        button.classList.remove('hidden')
+
       }
     }
   };
+
+const eventHandler = async(event) => {
+  if(event.target.hasAttribute('data-option')){
+    const option = event.target.getAttribute('data-option')
+    const id = event.target.getAttribute('data-id');
+    if(option === 'delete'){
+      const response = await fetch(`/api/blogs/${id}`, {
+        method: 'DELETE',
+      });
   
-const delButtonHandler = async (event) => {
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert('Failed to delete project');
+      }
+    }
+    else if (option === 'edit'){
+      document.location.assign(`/editBlog/${id}`)
+    }
+  }
+}
+
+/*const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
@@ -35,7 +65,18 @@ const delButtonHandler = async (event) => {
         alert('Failed to delete project');
       }
     }
-  };
+  };*/
+
+const appearForm = async (event) => {
+  event.preventDefault();
+
+  console.log(button)
+  console.log(state);
+
+  newBlog.classList.remove('hidden');
+  list.classList.add('hidden')
+  button.classList.add('hidden')
+};
   
 document
     .querySelector('.new-blog-form')
@@ -43,4 +84,8 @@ document
   
 document
     .querySelector('.blog-list')
-    .addEventListener('click', delButtonHandler);
+    .addEventListener('click', eventHandler);
+
+document
+    .querySelector('.add')
+    .addEventListener('click', appearForm);

@@ -1,12 +1,12 @@
 {{#each blog as |blog| }}
-<div class="project">
-  <div>
-    <h2>
-      <a href="/blog/{{blog.id}}">{{blog.title}}</a>
+<div class="flex flex-col flex-wrap justify-center m-3 border-8 border-yellow-950 rounded-md md:w-1/2 project">
+  <div class="bg-yellow-950 text-lime-200 flex justify-between">
+    <h2 class="my-2">
+      <a class="font-semibold text-sm sm:text-lg md:text-xl my-1" href="/blog/{{blog.id}}">{{blog.title}}</a>
     </h2>
-    <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+    <p class="font-semibold text-sm sm:text-lg md:text-xl my-1">Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
   </div>
-  <div>
+  <div class="m-3 rounded-md">
     <p>
       {{blog.description}}
     </p>
