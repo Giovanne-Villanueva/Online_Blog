@@ -9,7 +9,7 @@ Today I have continued to learn more about sequlize and using with handle bars. 
 ## Installtion
 
 There are none if your opening the project on the heruko link. Other wise you would just need to install the project libraries through node. Assuming you dont have node you would have to install it on your device. Afterwards you would just type in the following command in the project directory terminal.
- 
+
     npm intstall
 
 ## Usage
@@ -31,6 +31,7 @@ Once signed in users will be taken to their dashboard where they can make blog p
 
 Users while making a new blog posts there is some validation to make sure some of the feilds are not empty. besides that there is none.
 
+Heroku Link: https://immense-wildwood-60705-8e1ecc7beaca.herokuapp.com
 
 
 ## Credits
